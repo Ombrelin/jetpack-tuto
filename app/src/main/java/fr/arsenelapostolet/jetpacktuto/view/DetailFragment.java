@@ -21,13 +21,6 @@ import fr.arsenelapostolet.jetpacktuto.R;
 
 public class DetailFragment extends Fragment {
 
-
-    @BindView(R.id.floatingActionButton2)
-    public FloatingActionButton fab;
-
-    @BindView(R.id.textView2)
-    public TextView textView;
-
     private int uuid;
 
     public DetailFragment() {
@@ -46,13 +39,6 @@ public class DetailFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         if(getArguments() != null){
             this.uuid = DetailFragmentArgs.fromBundle(getArguments()).getDogUuid();
-            textView.setText(Integer.toString(this.uuid));
         }
-        fab.setOnClickListener(this::onGoToList);
-    }
-
-    private void onGoToList(View view) {
-        NavDirections action = DetailFragmentDirections.actionList();
-        Navigation.findNavController(fab).navigate(action);
     }
 }

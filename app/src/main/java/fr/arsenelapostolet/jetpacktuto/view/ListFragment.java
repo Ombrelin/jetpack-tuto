@@ -22,9 +22,6 @@ import fr.arsenelapostolet.jetpacktuto.R;
 
 public class ListFragment extends Fragment {
 
-    @BindView(R.id.floatingActionButton)
-    public FloatingActionButton fab;
-
     public ListFragment() {
     }
 
@@ -34,18 +31,6 @@ public class ListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         ButterKnife.bind(this,view);
         return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        fab.setOnClickListener(this::onGoToDetails);
-    }
-
-    private void onGoToDetails(View view) {
-        ListFragmentDirections.ActionDetail action = ListFragmentDirections.actionDetail();
-        action.setDogUuid(new Random().nextInt());
-        Navigation.findNavController(fab).navigate(action);
     }
 
 }
