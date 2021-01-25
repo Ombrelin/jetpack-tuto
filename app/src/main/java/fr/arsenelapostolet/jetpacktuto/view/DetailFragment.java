@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
@@ -18,10 +19,24 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fr.arsenelapostolet.jetpacktuto.R;
+import fr.arsenelapostolet.jetpacktuto.viewmodel.DogDetailViewModel;
 
 public class DetailFragment extends Fragment {
 
-    private int uuid;
+    private DogDetailViewModel viewModel;
+
+    @BindView(R.id.dogName)
+    public TextView dogName;
+
+    @BindView(R.id.dogPurpose)
+    public TextView dogPurpose;
+
+    @BindView(R.id.dogLifespan)
+    public TextView dogLifespan;
+
+    @BindView(R.id.dogTemperament)
+    public TextView dogTemperament;
+
 
     public DetailFragment() {
     }
@@ -37,8 +52,11 @@ public class DetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments() != null){
-            this.uuid = DetailFragmentArgs.fromBundle(getArguments()).getDogUuid();
-        }
+        viewModel = ViewModelProviders.of(this).get(DogDetailViewModel.class);
+        viewModel.init();
+        viewModel.dogName.observe(this, dogName::setText);
+        viewModel.dogPurpose.observe(this, dogPurpose::setText);
+        viewModel.dogLifeSpan.observe(this, dogLifespan::setText);
+        viewModel.dogTemperament.observe(this, dogTemperament::setText);
     }
 }
