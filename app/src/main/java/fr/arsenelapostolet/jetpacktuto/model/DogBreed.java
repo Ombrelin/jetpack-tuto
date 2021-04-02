@@ -9,7 +9,7 @@ public class DogBreed {
     private String bredFor;
     private String temperament;
     private String imageUrl;
-    private int uuid;
+
 
     public DogBreed(String breedId, String dogBreed, String lifeSpan, String breedGroup, String bredFor, String temperament, String imageUrl) {
         this.breedId = breedId;
@@ -20,6 +20,7 @@ public class DogBreed {
         this.temperament = temperament;
         this.imageUrl = imageUrl;
     }
+
 
     public String getBreedId() {
         return breedId;
@@ -75,13 +76,5 @@ public class DogBreed {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public int getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(int uuid) {
-        this.uuid = uuid;
     }
 }

@@ -35,7 +35,7 @@ public class ListViewModel extends AndroidViewModel {
                 new DogBreed("1", "corgi", "15 years", "", "", "", ""),
                 new DogBreed("2", "rotwailer", "10 years", "", "", "", ""),
                 new DogBreed("3", "labrador", "13 years", "", "", "", "")
-            ));
+        ));
         this.loading.setValue(false);
         this.dogLoadError.setValue(false);
     }

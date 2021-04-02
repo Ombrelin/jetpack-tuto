@@ -10,15 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,7 +47,7 @@ public class ListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -65,23 +62,23 @@ public class ListFragment extends Fragment {
         dogsList.setAdapter(this.dogsListAdapter);
 
         viewModel.dogs.observe(this, dogs -> {
-            if(dogs != null){
+            if (dogs != null) {
                 dogsList.setVisibility(View.VISIBLE);
                 this.dogsListAdapter.setDogList(dogs);
             }
         });
 
         viewModel.dogLoadError.observe(this, isError -> {
-            if(isError != null){
+            if (isError != null) {
                 error.setVisibility(isError ? View.VISIBLE : View.GONE);
             }
         });
 
         viewModel.loading.observe(this, isLoading -> {
-            if(isLoading != null){
+            if (isLoading != null) {
                 loader.setVisibility(isLoading ? View.VISIBLE : View.GONE);
             }
-            if(isLoading){
+            if (isLoading) {
                 dogsList.setVisibility(View.GONE);
                 error.setVisibility(View.GONE);
             }
