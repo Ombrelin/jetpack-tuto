@@ -1,12 +1,24 @@
 package fr.arsenelapostolet.jetpacktuto.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class DogBreed {
 
+    @SerializedName("id")
     private String breedId;
+
+    @SerializedName("name")
     private String dogBreed;
+
+    @SerializedName("life_span")
     private String lifeSpan;
+
+    @SerializedName("breed_group")
     private String breedGroup;
+
+    @SerializedName("bred_for")
     private String bredFor;
+
     private String temperament;
     private String imageUrl;
 
